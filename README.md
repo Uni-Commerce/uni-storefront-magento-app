@@ -73,25 +73,22 @@ When you want to forcefully reload, for example to reset the state of your app, 
 - **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
 - **iOS**: Press <kbd>R</kbd> in iOS Simulator.
 
-## Congratulations! :tada:
+###
 
-You've successfully run and modified your React Native App. :partying_face:
+使用 Xcode 构建
 
-### Now what?
+1. 在运行 ios 应用前，你可能还需要执行几段命令，手动初始化一下 ios 项目
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+```sh
+cd ./ios
+bundle install
+bundle exec pod install
+```
 
-# Troubleshooting
+### Android clean cache
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+```sh
+cd android
+./gradlew clean
+./gradlew dependencies
+```

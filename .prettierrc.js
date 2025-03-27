@@ -14,5 +14,5 @@ module.exports = {
   insertPragma: false,
   htmlWhitespaceSensitivity: 'ignore',
   endOfLine: 'lf',
-  embeddedLanguageFormatting: 'auto',
-};
+  embeddedLanguageFormatting: 'auto'
+}
