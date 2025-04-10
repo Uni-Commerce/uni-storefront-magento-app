@@ -1,4 +1,3 @@
-import { SafeAreaView } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { Provider as PaperProvider, MD2LightTheme, configureFonts } from 'react-native-paper'
 import type { MD2Theme } from 'react-native-paper'
@@ -27,9 +26,7 @@ const App = () => {
     <GestureHandlerRootView>
       <StoreProvider>
         <PaperProvider theme={theme}>
-          <SafeAreaView>
-            <AppLayout />
-          </SafeAreaView>
+          <AppLayout />
         </PaperProvider>
       </StoreProvider>
     </GestureHandlerRootView>

@@ -1,16 +1,36 @@
-import { View, Text } from 'react-native'
-import { Button } from 'react-native-paper'
+import { useEffect } from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
+import { useDispatch } from 'react-redux'
+
+import type { RootStackParamList } from '@/interfaces/navigation'
+import { actions as appAction } from '@/store/app'
+import HomeScreen from '@/routes/home'
 import TabBar from '@/components/TabBar'
 
+const Stack = createNativeStackNavigator<RootStackParamList>()
+
 const AppLayout = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(
+      appAction.setAppConfig({
+        currency: 'USD',
+        i18n: {},
+        storeConfig: {}
+      })
+    )
+  }, [])
+
   return (
-    <View>
-      <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-        <Text>App Layout</Text>
-      </Button>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="home" component={HomeScreen} />
+      </Stack.Navigator>
       <TabBar />
-    </View>
+    </NavigationContainer>
   )
 }
 

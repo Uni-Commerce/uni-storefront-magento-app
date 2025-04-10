@@ -3,7 +3,7 @@ import { createSlice, Slice } from '@reduxjs/toolkit'
 export const slice: Slice = createSlice({
   name: 'app',
   initialState: {
-    currency: 'USD',
+    currency: null,
     countryList: [],
     i18n: null,
     loading: false,
