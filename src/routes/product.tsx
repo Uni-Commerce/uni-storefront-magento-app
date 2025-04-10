@@ -11,10 +11,6 @@ const ProductScreen = () => {
   const navigation = useNavigation<NavigationProp>()
   const { params }: any = route
 
-  const onBack = () => {
-    navigation.navigate('home')
-  }
-
   useFocusEffect(
     useCallback(() => {
       navigation?.setOptions({

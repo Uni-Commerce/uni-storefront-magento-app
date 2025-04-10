@@ -9,6 +9,7 @@ import type { RootStackParamList } from '@/interfaces/navigation'
 import { actions as appAction } from '@/store/app'
 import HomeScreen from '@/routes/home'
 import ProductScreen from '@/routes/product'
+import TabBar from '@/components/TabBar'
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
@@ -54,6 +55,7 @@ const AppLayout = () => {
           }}
         />
       </Stack.Navigator>
+      {/* <TabBar /> */}
     </NavigationContainer>
   )
 }
