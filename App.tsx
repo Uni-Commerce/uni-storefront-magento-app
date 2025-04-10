@@ -1,26 +1,38 @@
-import React from 'react'
-import { SafeAreaView, Button, View, Text, Alert, useColorScheme } from 'react-native'
+import { SafeAreaView } from 'react-native'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { Provider as PaperProvider, MD2LightTheme, configureFonts } from 'react-native-paper'
+import type { MD2Theme } from 'react-native-paper'
 
-import { Colors } from 'react-native/Libraries/NewAppScreen'
+import StoreProvider from '@/provider/StoreProvider'
 import AppLayout from '@/components/AppLayout'
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark'
+const primaryColor: string = '#556cd6'
+const theme: MD2Theme = {
+  ...MD2LightTheme,
+  colors: {
+    ...MD2LightTheme.colors,
+    primary: primaryColor,
+    accent: primaryColor,
+    background: '#fff',
+    text: '#151515',
+    placeholder: '#797979'
+  },
+  roundness: 8,
+  fonts: configureFonts({ isV3: false }),
+  version: 2
+}
 
-  const backgroundStyle = {
-    flex: 1,
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter
-  }
-  console.info('backgroundStyle:', backgroundStyle)
-
+const App = () => {
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <Button color="#841584" title="123" onPress={() => Alert.alert('Simple Button pressed')} />
-      <View style={{ margin: 20, padding: 20 }}>
-        <Text style={{ fontSize: 20, fontWeight: 700 }}>123</Text>
-      </View>
-      <AppLayout />
-    </SafeAreaView>
+    <GestureHandlerRootView>
+      <StoreProvider>
+        <PaperProvider theme={theme}>
+          <SafeAreaView>
+            <AppLayout />
+          </SafeAreaView>
+        </PaperProvider>
+      </StoreProvider>
+    </GestureHandlerRootView>
   )
 }
 

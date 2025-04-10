@@ -92,3 +92,5 @@ cd android
 ./gradlew clean
 ./gradlew dependencies
 ```
+
+### Install the new npm dependencies
