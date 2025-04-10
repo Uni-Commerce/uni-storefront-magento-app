@@ -1,15 +1,19 @@
+import loadable from '@loadable/component'
 import { useEffect } from 'react'
+import { ActivityIndicator } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Button } from 'react-native-paper'
-
 import { useDispatch } from 'react-redux'
 
 import type { RootStackParamList } from '@/interfaces/navigation'
 import { actions as appAction } from '@/store/app'
 import HomeScreen from '@/routes/home'
-import ProductScreen from '@/routes/product'
-import TabBar from '@/components/TabBar'
+// import TabBar from '@/components/TabBar'
+
+const ProductScreen = loadable(() => import('@/routes//product'), {
+  fallback: <ActivityIndicator size="large" />
+})
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 

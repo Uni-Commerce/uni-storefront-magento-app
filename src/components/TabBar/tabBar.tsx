@@ -11,11 +11,23 @@ const TabBar = () => {
     <Tab.Navigator
       initialRouteName="account"
       screenOptions={() => ({
-        headerShown: false,
+        headerShown: true,
         tabBarHideOnKeyboard: Platform.OS === 'android'
       })}>
-      <Tab.Screen name="checkout" component={CheckoutSreen} />
-      <Tab.Screen name="account" component={AccountScreen} />
+      <Tab.Screen
+        name="checkout"
+        component={CheckoutSreen}
+        options={{
+          headerTitle: 'Checkout'
+        }}
+      />
+      <Tab.Screen
+        name="account"
+        component={AccountScreen}
+        options={{
+          headerTitle: 'Account'
+        }}
+      />
     </Tab.Navigator>
   )
 }
