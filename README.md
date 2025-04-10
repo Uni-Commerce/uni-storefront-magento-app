@@ -87,10 +87,12 @@ bundle exec pod install
 
 ### Android clean cache
 
+对于 Android，可能需要清理缓存后重新构建：
+
 ```sh
 cd android
 ./gradlew clean
-./gradlew dependencies
+cd android && ./gradlew clean
 ```
 
 ### Install the new npm dependencies
