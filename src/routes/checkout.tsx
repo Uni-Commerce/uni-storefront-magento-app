@@ -4,23 +4,15 @@ import { useNavigation } from '@react-navigation/native'
 
 import type { NavigationProp } from '@/interfaces/navigation'
 
-const HomeScreen = () => {
+const CheckoutSreen = () => {
   const navigation = useNavigation<NavigationProp>()
-
-  const handleRedirect = () => {
-    navigation.navigate('product', {
-      sku: 'HT-2150B'
-    })
-  }
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button icon="camera" mode="contained" onPress={handleRedirect}>
-        <Text>Go to Product</Text>
-      </Button>
+      <Text>Checkout Screen</Text>
+      <Button onPress={() => navigation.goBack()}>Go back</Button>
     </View>
   )
 }
 
-export default HomeScreen
+export default CheckoutSreen
