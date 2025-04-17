@@ -8,10 +8,17 @@ import { useDispatch } from 'react-redux'
 
 import type { RootStackParamList } from '@/interfaces/navigation'
 import { actions as appAction } from '@/store/app'
+import AuthScreen from '@/ui/AuthScreen'
 import HomeScreen from '@/routes/home'
 // import TabBar from '@/components/TabBar'
 
-const ProductScreen = loadable(() => import('@/routes//product'), {
+const ProductScreen = loadable(() => import('@/routes/product'), {
+  fallback: <ActivityIndicator size="large" />
+})
+const LoginScreen = loadable(() => import('@/routes/login'), {
+  fallback: <ActivityIndicator size="large" />
+})
+const AccountScreen = loadable(() => import('@/routes/account'), {
   fallback: <ActivityIndicator size="large" />
 })
 
@@ -56,6 +63,24 @@ const AppLayout = () => {
           component={ProductScreen}
           options={{
             title: 'Product Page'
+          }}
+        />
+        <Stack.Screen
+          name="login"
+          component={LoginScreen}
+          options={{
+            title: 'Login'
+          }}
+        />
+        <Stack.Screen
+          name="account"
+          component={() => (
+            <AuthScreen>
+              <AccountScreen />
+            </AuthScreen>
+          )}
+          options={{
+            title: 'Account'
           }}
         />
       </Stack.Navigator>

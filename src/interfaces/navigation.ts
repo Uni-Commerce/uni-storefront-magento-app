@@ -5,6 +5,7 @@ export type RootStackParamList = {
   login: undefined
   cart: undefined
   checkout: undefined
+  account: undefined
   product: {
     sku: string
   }

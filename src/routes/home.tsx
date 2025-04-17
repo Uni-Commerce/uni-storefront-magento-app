@@ -20,6 +20,9 @@ const HomeScreen = () => {
       <Button icon="camera" mode="contained" onPress={handleRedirect}>
         <Text>Go to Product</Text>
       </Button>
+      <Button onPress={() => navigation.navigate('account')}>
+        <Text>Account Information</Text>
+      </Button>
     </View>
   )
 }
