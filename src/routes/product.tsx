@@ -1,7 +1,7 @@
-import { useCallback } from 'react'
+import { useEffect } from 'react'
 import { SafeAreaView, Text } from 'react-native'
 import { Button } from 'react-native-paper'
-import { useRoute, useNavigation, useFocusEffect } from '@react-navigation/native'
+import { useRoute, useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
 
 import type { NavigationProp } from '@/interfaces/navigation'
@@ -12,13 +12,11 @@ const ProductScreen = () => {
   const currency = useSelector((state: any) => state.app.currency)
   const { params }: any = route
 
-  useFocusEffect(
-    useCallback(() => {
-      navigation?.setOptions({
-        title: params?.sku ?? ''
-      })
-    }, [params])
-  )
+  useEffect(() => {
+    navigation?.setOptions({
+      title: params?.sku ?? ''
+    })
+  }, [params])
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
