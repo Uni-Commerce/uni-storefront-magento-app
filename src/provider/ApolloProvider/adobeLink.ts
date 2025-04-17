@@ -2,15 +2,11 @@ import { ApolloLink, HttpLink } from '@apollo/client'
 import { onError } from '@apollo/client/link/error'
 import { REACT_NATIVE_API_URL } from '@env'
 
-import { shrinkFetchQuery } from './shrinkQuery'
-import { logURLLink } from './logURL'
-
 export const createAdobeLink = () => {
   const uri: string = `${REACT_NATIVE_API_URL}graphql`
   const httpLink = new HttpLink({
     uri,
     credentials: 'same-origin',
-    fetch: shrinkFetchQuery as any,
     useGETForQueries: true
   })
 
@@ -48,5 +44,5 @@ export const createAdobeLink = () => {
 
   const apolloLink = middlewareLink.concat(httpLink)
   const finalLink = errorLink.concat(apolloLink)
-  return ApolloLink.from([logURLLink(uri), finalLink])
+  return finalLink
 }

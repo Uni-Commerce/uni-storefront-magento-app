@@ -3,6 +3,7 @@ import { Provider as PaperProvider, MD2LightTheme, configureFonts } from 'react-
 import type { MD2Theme } from 'react-native-paper'
 
 import { axiosConfig, requestHandler, responseHandler, errorHandler } from '@/config/axios'
+import ApolloProvider from '@/provider/ApolloProvider'
 import AxiosProvider from '@/provider/AxiosProvider'
 import StoreProvider from '@/provider/StoreProvider'
 import AppLayout from '@/components/AppLayout'
@@ -25,19 +26,21 @@ const theme: MD2Theme = {
 
 const App = () => {
   return (
-    <AxiosProvider
-      config={axiosConfig}
-      requestInterceptors={[requestHandler]}
-      responseInterceptors={[responseHandler]}
-      errorInterceptors={[errorHandler]}>
-      <StoreProvider>
-        <GestureHandlerRootView>
-          <PaperProvider theme={theme}>
-            <AppLayout />
-          </PaperProvider>
-        </GestureHandlerRootView>
-      </StoreProvider>
-    </AxiosProvider>
+    <StoreProvider>
+      <ApolloProvider>
+        <AxiosProvider
+          config={axiosConfig}
+          requestInterceptors={[requestHandler]}
+          responseInterceptors={[responseHandler]}
+          errorInterceptors={[errorHandler]}>
+          <GestureHandlerRootView>
+            <PaperProvider theme={theme}>
+              <AppLayout />
+            </PaperProvider>
+          </GestureHandlerRootView>
+        </AxiosProvider>
+      </ApolloProvider>
+    </StoreProvider>
   )
 }
 

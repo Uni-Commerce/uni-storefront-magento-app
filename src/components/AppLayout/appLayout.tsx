@@ -1,14 +1,11 @@
 import loadable from '@loadable/component'
-import { useEffect } from 'react'
 import { ActivityIndicator } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Button } from 'react-native-paper'
-import { useDispatch } from 'react-redux'
 
 import type { RootStackParamList } from '@/interfaces/navigation'
-import { actions as appAction } from '@/store/app'
-import AuthScreen from '@/ui/AuthScreen'
+import { useAppLayout } from '@/hooks/AppLayout'
 import HomeScreen from '@/routes/home'
 // import TabBar from '@/components/TabBar'
 
@@ -25,17 +22,7 @@ const AccountScreen = loadable(() => import('@/routes/account'), {
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 const AppLayout = () => {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(
-      appAction.setAppConfig({
-        currency: 'USD',
-        i18n: {},
-        storeConfig: {}
-      })
-    )
-  }, [])
+  useAppLayout()
 
   return (
     <NavigationContainer>
@@ -74,11 +61,7 @@ const AppLayout = () => {
         />
         <Stack.Screen
           name="account"
-          component={() => (
-            <AuthScreen>
-              <AccountScreen />
-            </AuthScreen>
-          )}
+          component={AccountScreen}
           options={{
             title: 'Account'
           }}
