@@ -4,15 +4,15 @@ import { useNavigation } from '@react-navigation/native'
 
 import type { NavigationProp } from '@/interfaces/navigation'
 
-const AccountScreen = () => {
+const ScanScreen = () => {
   const navigation = useNavigation<NavigationProp>()
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Account Screen</Text>
+      <Text>Scan Screen</Text>
       <Button onPress={() => navigation.goBack()}>Go back</Button>
     </View>
   )
 }
 
-export default AccountScreen
+export default ScanScreen
