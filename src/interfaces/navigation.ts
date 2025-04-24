@@ -2,7 +2,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 
 export type RootStackParamList = {
   home: undefined
-  login: undefined
+  category: undefined
   cart: undefined
   checkout: undefined
   account: undefined

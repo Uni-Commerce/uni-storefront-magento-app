@@ -1,73 +1,64 @@
 import loadable from '@loadable/component'
-import { ActivityIndicator } from 'react-native'
+import { ActivityIndicator, Platform } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { Button } from 'react-native-paper'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import type { RootStackParamList } from '@/interfaces/navigation'
 import { useAppLayout } from '@/hooks/AppLayout'
 import HomeScreen from '@/routes/home'
-// import TabBar from '@/components/TabBar'
 
-const ProductScreen = loadable(() => import('@/routes/product'), {
+const CategorySreen = loadable(() => import('@/routes/category'), {
   fallback: <ActivityIndicator size="large" />
 })
-const LoginScreen = loadable(() => import('@/routes/login'), {
+const CartSreen = loadable(() => import('@/routes/cart'), {
   fallback: <ActivityIndicator size="large" />
 })
 const AccountScreen = loadable(() => import('@/routes/account'), {
   fallback: <ActivityIndicator size="large" />
 })
 
-const Stack = createNativeStackNavigator<RootStackParamList>()
+const Tab = createBottomTabNavigator<RootStackParamList>()
 
 const AppLayout = () => {
   useAppLayout()
 
   return (
     <NavigationContainer>
-      <Stack.Navigator
+      <Tab.Navigator
         initialRouteName="home"
         screenOptions={() => ({
-          animation: 'slide_from_right',
-          animationDuration: 100,
-          gestureDirection: 'horizontal',
-          gestureEnabled: false,
-          headerTitleAlign: 'center',
-          headerTintColor: '#151515',
-          headerRight: () => <Button>Info</Button>
+          headerShown: true,
+          tabBarHideOnKeyboard: Platform.OS === 'android'
         })}>
-        <Stack.Screen
+        <Tab.Screen
           name="home"
           component={HomeScreen}
           options={{
-            title: 'Home Page',
-            headerBackVisible: false
+            title: 'Home'
           }}
         />
-        <Stack.Screen
-          name="product"
-          component={ProductScreen}
+        <Tab.Screen
+          name="category"
+          component={CategorySreen}
           options={{
-            title: 'Product Page'
+            title: 'Category'
           }}
         />
-        <Stack.Screen
-          name="login"
-          component={LoginScreen}
+        <Tab.Screen
+          name="cart"
+          component={CartSreen}
           options={{
-            title: 'Login'
+            title: 'Cart'
           }}
         />
-        <Stack.Screen
+        <Tab.Screen
           name="account"
           component={AccountScreen}
           options={{
             title: 'Account'
           }}
         />
-      </Stack.Navigator>
-      {/* <TabBar /> */}
+      </Tab.Navigator>
     </NavigationContainer>
   )
 }
