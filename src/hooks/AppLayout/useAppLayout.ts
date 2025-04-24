@@ -16,7 +16,6 @@ export const useAppLayout = () => {
   useEffect(() => {
     const fetchConfig = async () => {
       const { data } = await getStoreConfig()
-      console.info(data)
       if (data) {
         dispatch(
           appAction.setAppConfig({

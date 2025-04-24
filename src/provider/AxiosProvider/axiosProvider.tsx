@@ -7,6 +7,7 @@ import type {
   AxiosError,
   InternalAxiosRequestConfig
 } from 'axios'
+import { REACT_NATIVE_API_URL } from '@env'
 
 interface AxiosProviderProps {
   config?: AxiosRequestConfig
@@ -35,7 +36,7 @@ const AxiosProvider: React.FC<AxiosProviderProps> = ({
 }) => {
   const axiosInstance = useMemo(() => {
     const instance = axios.create({
-      baseURL: 'https://api.example.com',
+      baseURL: REACT_NATIVE_API_URL,
       timeout: 10000,
       headers: {
         'Content-Type': 'application/json'

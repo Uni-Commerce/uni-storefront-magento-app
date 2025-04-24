@@ -34,28 +34,36 @@ const AppLayout = () => {
           name="home"
           component={HomeScreen}
           options={{
-            title: 'Home'
+            title: 'Home',
+            tabBarLabel: 'Home'
+            // tabBarIcon: ({ focused }) => {
+            //   // const Component = focused ? ProductsActiveIcon : ProductsIcon
+            //   return <Component width={24} height={24} />
+            // }
           }}
         />
         <Tab.Screen
           name="category"
           component={CategorySreen}
           options={{
-            title: 'Category'
+            title: 'Category',
+            tabBarLabel: 'Category'
           }}
         />
         <Tab.Screen
           name="cart"
           component={CartSreen}
           options={{
-            title: 'Cart'
+            title: 'Cart',
+            tabBarLabel: 'Cart'
           }}
         />
         <Tab.Screen
           name="account"
           component={AccountScreen}
           options={{
-            title: 'Account'
+            title: 'Account',
+            tabBarLabel: 'Account'
           }}
         />
       </Tab.Navigator>
