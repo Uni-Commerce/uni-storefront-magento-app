@@ -2,6 +2,8 @@ import loadable from '@loadable/component'
 import { ActivityIndicator, Platform } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import type { RootStackParamList } from '@/interfaces/navigation'
 import { useAppLayout } from '@/hooks/AppLayout'
@@ -35,11 +37,11 @@ const AppLayout = () => {
           component={HomeScreen}
           options={{
             title: 'Home',
-            tabBarLabel: 'Home'
-            // tabBarIcon: ({ focused }) => {
-            //   // const Component = focused ? ProductsActiveIcon : ProductsIcon
-            //   return <Component width={24} height={24} />
-            // }
+            tabBarLabel: 'Home',
+            tabBarIcon: ({ focused }) => {
+              // const Component = focused ? ProductsActiveIcon : ProductsIcon
+              return <MaterialIcons name="home-outline" size={28} />
+            }
           }}
         />
         <Tab.Screen
@@ -47,7 +49,10 @@ const AppLayout = () => {
           component={CategorySreen}
           options={{
             title: 'Category',
-            tabBarLabel: 'Category'
+            tabBarLabel: 'Category',
+            tabBarIcon: () => {
+              return <Ionicons name="grid-outline" size={24} />
+            }
           }}
         />
         <Tab.Screen
@@ -55,7 +60,10 @@ const AppLayout = () => {
           component={CartSreen}
           options={{
             title: 'Cart',
-            tabBarLabel: 'Cart'
+            tabBarLabel: 'Cart',
+            tabBarIcon: () => {
+              return <Ionicons name="cart-outline" size={28} />
+            }
           }}
         />
         <Tab.Screen
@@ -63,7 +71,10 @@ const AppLayout = () => {
           component={AccountScreen}
           options={{
             title: 'Account',
-            tabBarLabel: 'Account'
+            tabBarLabel: 'Account',
+            tabBarIcon: () => {
+              return <MaterialIcons name="account-outline" size={30} />
+            }
           }}
         />
       </Tab.Navigator>
